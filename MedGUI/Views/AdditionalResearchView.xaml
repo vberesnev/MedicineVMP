@@ -1,0 +1,529 @@
+﻿<Page x:Class="MedGUI.Views.AdditionalResearchView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+      xmlns:local="clr-namespace:MedGUI.Views"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="750"
+      Title="AdditionalResearchView"
+      Background="Snow">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource HeadlineTextBlock}" Text="Данные дополнительных исследований"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource TableTextBlock}" 
+                           Grid.Column="0" Grid.Row="0" Text="Общий анализ крови" 
+                           VerticalAlignment="Top"/>
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  
+                            Grid.Column="1" Grid.Row="0"
+                            SelectedDate="{Binding
+                                            Path=AdditionalResearch.GeneralBloodAnalysis.Date,
+                                            Mode=TwoWay}"     
+                            />
+                <TextBlock Grid.Column="1" Grid.Row="1" 
+                           Style="{StaticResource TableTextBlock}" VerticalAlignment="Top"  
+                           Text="Лейкоцитная формула"/>
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="Hb"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="1" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.Hb, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="г/л"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="э/ц"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="4" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.E_C, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="5" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="е12/л"/>
+                    <TextBlock Grid.Column="6" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="ЦП"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="7" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.CP, Converter={StaticResource medConverter}}"      
+                        />
+
+                    <!---->
+                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="л/ц"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="1" Grid.Row="1"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.L_C, Converter={StaticResource medConverter}}"      
+                        />
+                    <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="е9/л"/>
+                    <!-- -->
+                    <TextBlock Grid.Column="3" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="т/ц"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="4" Grid.Row="2"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.T_C, Converter={StaticResource medConverter}}"      
+                              />
+                    <TextBlock Grid.Column="5" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="е9/л"/>
+                </Grid>
+                <!-- -->
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="п/я"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="1" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.P_YA, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="с/я"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="4" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.C_YA, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="5" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
+                    <!-- -->
+                    <TextBlock Grid.Column="6" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="э/о"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="7" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.E_O, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="8" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="л/ф"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="1" Grid.Row="1"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.L_F, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
+                    <!-- -->
+                    <TextBlock Grid.Column="3" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="мо"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="4" Grid.Row="1"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.MO, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="5" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
+                    <TextBlock Grid.Column="6" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="СОЭ"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="7" Grid.Row="1"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.COE, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="8" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="мм/ч"/>
+                </Grid>
+
+                <!---->
+                <TextBlock Style="{StaticResource TableTextBlock}" 
+                           Grid.Column="0" Grid.Row="2" Text="Биохимический анализ крови" 
+                           VerticalAlignment="Top"/>
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  
+                            Grid.Column="1" Grid.Row="2"
+                            SelectedDate="{Binding
+                                            Path=AdditionalResearch.ChemistryBloodAnalysis.Date,
+                                            Mode=TwoWay}"
+                            />
+                 <Grid Grid.Column="2" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TableTextBlock}"  HorizontalAlignment="Right" Text="креатинин"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="1" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Creatinine, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="мочевина"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                              Grid.Column="4" Grid.Row="0"
+                              Style="{StaticResource TableTextBox}"
+                              Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Urea, Converter={StaticResource medConverter}}"
+                              />
+                    <TextBlock Grid.Column="5" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="общий ХС"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                Grid.Column="1" Grid.Row="1"
+                                  Style="{StaticResource TableTextBox}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.CommonXC, Converter={StaticResource medConverter}}"/>
+                    <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="глюкоза"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                  Grid.Column="4" Grid.Row="1"
+                                  Style="{StaticResource TableTextBox}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Glucose, Converter={StaticResource medConverter}}"
+                                  />
+                    <TextBlock Grid.Column="5" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+                    <!-- -->
+                    <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="общий билирубин"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                  Grid.Column="1" Grid.Row="2"
+                                  Style="{StaticResource TableTextBox}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TotalBilirubin, Converter={StaticResource medConverter}}"
+                                  />
+                    <TextBlock Grid.Column="2" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+                    <TextBlock Grid.Column="3" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="общий белок"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                      Grid.Column="4" Grid.Row="2"
+                                      Style="{StaticResource TableTextBox}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TotalProtein, Converter={StaticResource medConverter}}"
+                                      />
+                    <TextBlock Grid.Column="5" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+
+                    <!-- -->
+                    <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="альбумин"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                  Grid.Column="1" Grid.Row="3"
+                                  Style="{StaticResource TableTextBox}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Albumen, Converter={StaticResource medConverter}}"
+                                  />
+                    <TextBlock Grid.Column="2" Grid.Row="3" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="г/л"/>
+                    <TextBlock Grid.Column="3" Grid.Row="3" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="АЛТ"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                  Grid.Column="4" Grid.Row="3"
+                                  Style="{StaticResource TableTextBox}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.ALT, Converter={StaticResource medConverter}}"
+                                  />
+                    <TextBlock Grid.Column="5" Grid.Row="3" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="Ед."/>
+                    <!-- -->
+                    <TextBlock Grid.Column="0" Grid.Row="4" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="АСТ"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                      Grid.Column="1" Grid.Row="4"
+                                      Style="{StaticResource TableTextBox}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.ACT, Converter={StaticResource medConverter}}"
+                                      />
+                    <TextBlock Grid.Column="2" Grid.Row="4" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="Ед."/>
+                    <TextBlock Grid.Column="3" Grid.Row="4" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="ТГ"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                      Grid.Column="4" Grid.Row="4"
+                                      Style="{StaticResource TableTextBox}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TG, Converter={StaticResource medConverter}}"
+                                      />
+                    <TextBlock Grid.Column="5" Grid.Row="4" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="мкмоль/л"/>
+                    <!-- -->
+                    <TextBlock Grid.Column="0" Grid.Row="5" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="ЛПВП"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                      Grid.Column="1" Grid.Row="5"
+                                      Style="{StaticResource TableTextBox}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.LPVP, Converter={StaticResource medConverter}}"
+                                      />
+                    <TextBlock Grid.Column="2" Grid.Row="5" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+                    <TextBlock Grid.Column="3" Grid.Row="5" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="ЛПНП"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
+                                          Grid.Column="4" Grid.Row="5"
+                                          Style="{StaticResource TableTextBox}"
+                                          Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.LPNP, Converter={StaticResource medConverter}}"
+                                          />
+                    <TextBlock Grid.Column="5" Grid.Row="5" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
+                </Grid>
+                <TextBlock Style="{StaticResource TableTextBlock}" 
+                               Grid.Column="0" Grid.Row="3" Text="МР" 
+                               VerticalAlignment="Top"/>
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  
+                            Grid.Column="1" Grid.Row="3"
+                         SelectedDate="{Binding
+                                            Path=AdditionalResearch.MP.Date,
+                                            Mode=TwoWay}"    
+                        />
+                <Grid Grid.Column="2" Grid.Row="3" >
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox  Name="mp_comboBox" 
+                       Grid.Column="1"
+                       Style="{StaticResource  DefaultComboBox}" 
+                       SelectedValuePath="Content" SelectedValue="{Binding AdditionalResearch.MP.Result}">
+                        <ComboBoxItem Content="Положительный" />
+                        <ComboBoxItem Content="Отрицательный"  />
+                    </ComboBox>
+                </Grid>
+
+                <TextBlock Style="{StaticResource TableTextBlock}" 
+                           Grid.Column="0" Grid.Row="4" Text="Общий анализ мочи" 
+                           VerticalAlignment="Top"/>
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  
+                        Grid.Column="1" Grid.Row="4"
+                        SelectedDate="{Binding
+                                            Path=AdditionalResearch.GeneralUrineAnalysis.Date,
+                                            Mode=TwoWay}"/>
+                            
+                <Grid Grid.Column="2" Grid.Row="4" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TableTextBlock}"  Text="Цвет"/>
+                    <TextBox   Grid.Column="1" Grid.Row="0"
+                            Style="{StaticResource TableTextBox}"
+                            Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Color}"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TableTextBlock}"  Text="Плотность"/>
+                    <TextBox  PreviewTextInput="TextBox_PreviewTextInput" 
+                                  Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Density, Converter={StaticResource medConverter}}"
+                                  Grid.Column="1" Grid.Row="1"
+                                  Style="{StaticResource TableTextBox}"/>
+                    <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource TableTextBlock}"  Text="Реакция"/>
+                    <ComboBox  
+                       Grid.Column="1" Grid.Row="2"
+                       Style="{StaticResource  DefaultComboBox}" 
+                       SelectedValuePath="Content" 
+                       SelectedValue="{Binding AdditionalResearch.GeneralUrineAnalysis.Reaction}">
+                        <ComboBoxItem Content="Кислая" />
+                        <ComboBoxItem Content="Щелочная"  />
+                        <ComboBoxItem Content="Нейтральная"  />
+                    </ComboBox>
+                    <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource TableTextBlock}"  Text="Белок"/>
+                    <ComboBox  
+                       x:Name="protein_comboBox"
+                       Grid.Column="1" Grid.Row="3"
+                       Style="{StaticResource  DefaultComboBox}" 
+                       SelectedValuePath="Content" SelectedValue="{Binding AdditionalResearch.GeneralUrineAnalysis.Protein}">
+                        <ComboBoxItem Content="Отрицательный" />
+                        <ComboBoxItem Content="Положительный" />
+                    </ComboBox>
+                    <StackPanel  Grid.Column="2" Grid.Row="3" Orientation="Horizontal" >
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=protein_comboBox, Path=SelectedValue}" Value="Отрицательный">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=protein_comboBox, Path=SelectedValue}" Value="Положительый">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <TextBox    PreviewTextInput="TextBox_PreviewTextInput"
+                                    Text="{Binding AdditionalResearch.GeneralUrineAnalysis.ProteinDetail}"
+                                    Style="{StaticResource TableTextBox}" Width="50" 
+                                    />
+                        <TextBlock  Style="{StaticResource TableTextBlock}" Text="г."/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="0" Grid.Row="4" Style="{StaticResource TableTextBlock}"  Text="Глюкоза"/>
+                    <ComboBox  
+                       Grid.Column="1" Grid.Row="4"
+                       Style="{StaticResource  DefaultComboBox}" 
+                       SelectedValuePath="Content" 
+                       SelectedValue="{Binding AdditionalResearch.GeneralUrineAnalysis.Glucose}">
+                        <ComboBoxItem Content="Отрицательно" />
+                        <ComboBoxItem Content="Положительно" />
+                    </ComboBox>
+                    <StackPanel  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Orientation="Horizontal">
+                        <TextBlock  Style="{StaticResource TableTextBlock}" Text="л/ц"/>
+                        <TextBox PreviewTextInput="TextBox_PreviewTextInput"    
+                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.L_C, Converter={StaticResource medConverter}}"
+                                Style="{StaticResource TableTextBox}" Width="45" 
+                                />
+                        <TextBlock  Style="{StaticResource TableTextBlock}" Text="в п.зр., эпителиальные клетки"/>
+                        <TextBox PreviewTextInput="TextBox_PreviewTextInput"    
+                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.EpithelialCells, Converter={StaticResource medConverter}}"
+                                Style="{StaticResource TableTextBox}" Width="45" 
+                                />
+                        <TextBlock  Style="{StaticResource TableTextBlock}" Text="слизь"/>
+                        <TextBox PreviewTextInput="TextBox_PreviewTextInput"    
+                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Slime, Converter={StaticResource medConverter}}"
+                                Style="{StaticResource TableTextBox}" Width="45" 
+                                />
+                    </StackPanel>
+                </Grid>
+                <TextBlock Style="{StaticResource TableTextBlock}" 
+                               Grid.Column="0" Grid.Row="5" Text="Кал на я/г" 
+                               VerticalAlignment="Top"/>
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  
+                            Grid.Column="1" Grid.Row="5"   
+                            SelectedDate="{Binding
+                                                Path=AdditionalResearch.Feces.Date,
+                                                Mode=TwoWay}"    />
+                <Grid Grid.Column="2" Grid.Row="5" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox  
+                           Grid.Column="1"
+                           Style="{StaticResource  DefaultComboBox}" 
+                           SelectedValuePath="Content" 
+                           SelectedValue="{Binding AdditionalResearch.Feces.Result}" BorderBrush="#FF301E1E">
+                        <ComboBoxItem Content="Обнаружено" />
+                        <ComboBoxItem Content="Не обнаружено"  />
+                    </ComboBox>
+                </Grid>
+
+                <TextBlock Style="{StaticResource TableTextBlock}" 
+                               Grid.Column="0" Grid.Row="6" Text="ЭКГ" 
+                               VerticalAlignment="Top"/>
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  
+                            Grid.Column="1" Grid.Row="6"   
+                            SelectedDate="{Binding
+                                                Path=AdditionalResearch.ECG.Date,
+                                                Mode=TwoWay}" />
+                <Grid Grid.Column="2" Grid.Row="6" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TableTextBlock}"  Text="Ритм"/>
+                    <ComboBox  
+                           Grid.Column="1" Grid.Row="0" 
+                           Style="{StaticResource DefaultComboBox}"
+                           SelectedValuePath="Content" 
+                           SelectedValue="{Binding AdditionalResearch.ECG.Rhythm}">
+                        <ComboBoxItem Content="Синусовый" />
+                        <ComboBoxItem Content="Из АВ-узла"  />
+                        <ComboBoxItem Content="Из СА-узла"  />
+                    </ComboBox>
+                    <StackPanel  Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock  Style="{StaticResource TableTextBlock}" Text="ЧСС"/>
+                        <TextBox    PreviewTextInput="TextBox_PreviewTextInput"
+                                    Text="{Binding AdditionalResearch.ECG.Rate, Converter={StaticResource medConverter}}"
+                                    Style="{StaticResource TableTextBox}" Width="40" 
+                                    />
+                        <TextBlock  Style="{StaticResource TableTextBlock}" Text="уд/мин"/>
+                    </StackPanel>
+                    <CheckBox  Grid.Column="0" Grid.Row="1"
+                        x:Name="ECG_addInfo_checkBox" Content="Доп. информация"
+                               Unchecked="ECG_addInfo_checkBox_Unchecked">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding ECGAdditionalInfoCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </CheckBox>
+                    <TextBox x:Name="ECG_addInfo_TextBox" 
+                            Style="{StaticResource TableTextBox}" 
+                             Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  
+                             IsEnabled="{Binding IsChecked, ElementName=ECG_addInfo_checkBox}"
+                             Text="{Binding AdditionalResearch.ECG.AdditionalInfo}"/>
+                </Grid>
+            </Grid>
+            <TextBlock Style="{StaticResource SubtitleTextBlock}" HorizontalAlignment="Left" Margin="5, 30, 5, 10" Text="Добавить исследование"/>
+            <Grid Margin="5, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox   Grid.Column="0" Grid.Row="0"
+                            Style="{StaticResource MidleTextBox}"
+                            Text="{Binding SelectedOtherResearch.Research}"    />         
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  VerticalAlignment="Center"
+                         Grid.Column="1" Grid.Row="0" 
+                         SelectedDate="{Binding
+                         Path=SelectedOtherResearch.Date,
+                         Mode=TwoWay}"/>
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox   Grid.Column="0" TextWrapping="Wrap" FontSize="12"
+                        Style="{StaticResource MidleTextBox}"
+                        Text="{Binding SelectedOtherResearch.Result}" />
+                    <Button   Grid.Column="1" Grid.Row="0" Content="Добавить" Margin="5"
+                              Style="{StaticResource FormButton}"
+                              Command="{Binding AddOtherResearchCommand}"
+                            CommandParameter="{Binding SelectedOtherResearch}"/>
+                </Grid>
+            </Grid>
+            <Grid Margin="5, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Grid.Row="0" 
+                          Name="OtherResearchesList" 
+                          ItemsSource="{Binding OtherResearches}"
+                          Style="{StaticResource ListViewStyle}"
+                          ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Research}" Width="140">Исследование</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Date, StringFormat='dd.MM.yyyy'}" Width="140" Header="Дата"></GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Result}" Width="360">Результат</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button   Grid.Column="1" Grid.Row="0" Content="Удалить" Margin="5"
+                          Style="{StaticResource FormButton}"
+                          Command="{Binding DeleteOtherResearchCommand}"
+                          CommandParameter="{Binding SelectedItem, ElementName=OtherResearchesList}"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

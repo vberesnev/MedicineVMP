@@ -1,0 +1,69 @@
+﻿<Page x:Class="MedGUI.Views.DiagmosisView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:local="clr-namespace:MedGUI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="DiagnosisView"
+      Background="Snow">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource HeadlineTextBlock}" Text="Диагноз"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Margin="0, 0, 0, 10" Orientation="Horizontal">
+                    <TextBlock  Style="{StaticResource DefaultTextBlock}" Text="Код диагноза по МКБ" VerticalAlignment="Top" />
+                    <TextBox Style="{StaticResource DefaultTextBox}" 
+                             Width="50" 
+                             Text="{Binding Diagnos.DiagnosisCode}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="1"  Margin="0, 10" >
+                    <TextBlock  Style="{StaticResource DefaultTextBlock}" Text="Основной"/>
+                    <TextBox Style="{StaticResource MidleTextBox}"
+                             Text="{Binding Diagnos.General}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="2"  Margin="0, 10" >
+                    <CheckBox  x:Name="complicationsCheckBox" Content="Осложнения"
+                               Style="{StaticResource SubtitleCheckBox}" 
+                               IsChecked="{Binding IsComplications}"
+                               Unchecked="ClearTextBoxesByCheckBoxes" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding ComplicationsUncheckedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </CheckBox>
+                    <TextBox x:Name="complications_TextBox" 
+                             Style="{StaticResource MidleTextBox}" 
+                             IsEnabled="{Binding IsChecked, ElementName=complicationsCheckBox}"
+                             Text="{Binding Diagnos.Complications}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="3"  Margin="0, 10" >
+                    <TextBlock  Style="{StaticResource DefaultTextBlock}" Text="Сопутствующий"/>
+                    <TextBox Style="{StaticResource HugeTextBox}" 
+                             IsEnabled="{Binding IsChecked, ElementName=chronicDiseasesCheckBox}"
+                             Text="{Binding Diagnos.Companion}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="4"  Margin="0, 10, 0, 0" >
+                    <TextBlock  Style="{StaticResource DefaultTextBlock}" Text="Выписка подготовлена на"/>
+                    <TextBox Style="{StaticResource DefaultTextBox}" 
+                             IsEnabled="{Binding IsChecked, ElementName=allergyHistoryCheckBox}"
+                              Text="{Binding Diagnos.VMPFor}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="MedGUI.Views.AddPoliceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedGUI.Views"
+        mc:Ignorable="d"
+        Title="Новый полис" Height="130" Width="400">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" 
+                   Style="{StaticResource SubtitleTextBlock}" 
+                   Text="Полис"/>
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="police_textBox" Style="{StaticResource DefaultTextBox}" />
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource FormButton}" x:Name="CancelButton" Click="CancelButton_Click" Content="Отмена"/>
+            <Button Grid.Column="1" Style="{StaticResource FormButton}" x:Name="AddPolice_button" Click="AddPolice_button_Click" Content="Сохранить"/>
+        </Grid>
+        
+    </Grid>
+</Window>

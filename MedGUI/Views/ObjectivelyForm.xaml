@@ -1,0 +1,679 @@
+﻿<Page x:Class="MedGUI.Views.ObjectivelyForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:local="clr-namespace:MedGUI.Views"
+      mc:Ignorable="d" d:DesignWidth="600"
+      Title="ObjectivelyForm"
+      Background="Snow" Height="1030">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding SaveEyesDataCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid >
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource HeadlineTextBlock}" Text="Объективно"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource SubtitleTextBlock}" Text="Описание глаз"/>
+                <ComboBox x:Name="eyeDescription_comboBox"
+                          Width="200"
+                          Margin="5"
+                          HorizontalContentAlignment="Center"
+                          Style="{StaticResource DefaultComboBox}" 
+                          ItemsSource="{Binding EyeDescriptionMethods}"
+                          SelectedItem="{Binding SelectedDescription}"
+                          SelectedIndex="0"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Value"
+                          />
+            </StackPanel>
+
+            <Grid Margin="5, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource SubtitleTextBlock}" Grid.Column="1" Grid.Row="0" Text="OD" />
+                <TextBlock Style="{StaticResource SubtitleTextBlock}" Grid.Column="2" Grid.Row="0" Text="OS" />
+                <TextBlock Style="{StaticResource SubtitleTextBlock}" Grid.Column="0" Grid.Row="1" Text="Visus" />
+                <TextBox Style="{StaticResource DefaultTextBox}" Grid.Column="1" Grid.Row="1"  Text="{Binding ODEye.Visus}" />
+                <TextBox Style="{StaticResource DefaultTextBox}"  Grid.Column="2" Grid.Row="1"  Text="{Binding OSEye.Visus}"/>
+            </Grid>
+            <Grid x:Name="EyeDescription" Margin="5, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="{Binding ElementName=eyeDescription_comboBox, Path=SelectedValue}"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Background="LightSkyBlue"/>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Background="LightSkyBlue"/>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Background="LightSkyBlue"/>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Background="LightSkyBlue"/>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="8" Background="LightSkyBlue"/>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="10" Background="LightSkyBlue"/>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="12" Background="LightSkyBlue"/>
+                <Border Grid.Column="2" Grid.Row="0" Grid.RowSpan="16" Visibility="Hidden"/>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="0" Text="Положение глазных яблок" />
+                <StackPanel Grid.Column="1" Grid.Row="0" Style="{StaticResource TableStackPanel}"  >
+                    <ComboBox x:Name="OD_eyeBallPosition_comboBox"
+                              Style="{StaticResource DefaultComboBox}"  
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.EyeBallPosition}">
+                        <ComboBoxItem Content="Правильное"/>
+                        <ComboBoxItem Content="Неправильное"/>
+                    </ComboBox>
+                    <TextBox  x:Name="OD_eyeball_textBox"  VerticalAlignment="Center"  FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.EyeBallPositionDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeBallPosition_comboBox, Path=SelectedValue}" Value="Правильное">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeBallPosition_comboBox, Path=SelectedValue}" Value="Неправильное">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="0" Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_eyeBallPosition_comboBox" 
+                              Style="{StaticResource DefaultComboBox}"  
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.EyeBallPosition}">
+                        <ComboBoxItem Content="Правильное"/>
+                        <ComboBoxItem Content="Неправильное"/>
+                    </ComboBox>
+                    <TextBox  x:Name="OS_eyeball_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                               Text="{Binding OSEye.EyeBallPositionDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeBallPosition_comboBox, Path=SelectedValue}" Value="Правильное">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeBallPosition_comboBox, Path=SelectedValue}" Value="Неправильное">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="1" Text="Движение" />
+                <StackPanel Grid.Column="1" Grid.Row="1" Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_eyeMotion_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.Motion}">
+                        <ComboBoxItem Content="В полном объеме"/>
+                        <ComboBoxItem Content="Ограниченное" />
+                    </ComboBox>
+                    <TextBox  Name="OD_eyeMotion_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru" 
+                              Text="{Binding ODEye.MotionDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeMotion_comboBox, Path=SelectedValue}" Value="В полном объеме">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeMotion_comboBox, Path=SelectedValue}" Value="Ограниченное">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="1" Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OS_eyeMotion_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Motion}">
+                        <ComboBoxItem Content="В полном объеме"/>
+                        <ComboBoxItem Content="Ограниченное" />
+                    </ComboBox>
+                    <TextBox  Name="OS_eyeMotion_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.MotionDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeMotion_comboBox, Path=SelectedValue}" Value="В полном объеме">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeMotion_comboBox, Path=SelectedValue}" Value="Ограниченное">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="2" Text="Глаза"/>
+                <StackPanel Grid.Column="1" Grid.Row="2"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_character_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.Character}">
+                        <ComboBoxItem Content="Спокойны"/>
+                        <ComboBoxItem Content="Другое"/>
+                    </ComboBox>
+                    <TextBox  Name="OD_character_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.CharacterDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_character_comboBox, Path=SelectedValue}" Value="Спокойны">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_character_comboBox, Path=SelectedValue}" Value="Другое">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="2"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_character_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Character}">
+                        <ComboBoxItem Content="Спокойны"/>
+                        <ComboBoxItem Content="Другое"/>
+                    </ComboBox>
+                    <TextBox  Name="OS_character_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                             Text="{Binding OSEye.CharacterDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_character_comboBox, Path=SelectedValue}" Value="Спокойны">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_character_comboBox, Path=SelectedValue}" Value="Другое">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="3" Text="Веки" />
+                <StackPanel Grid.Column="1" Grid.Row="3"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OD_eyeLids_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.EyeLids}">
+                        <ComboBoxItem Content="Не изменены"/>
+                        <ComboBoxItem Content="Изменены"/>
+                    </ComboBox>
+                    <TextBox  Name="OD_eyeLids_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.EyeLidsDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeLids_comboBox, Path=SelectedValue}" Value="Не изменены">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeLids_comboBox, Path=SelectedValue}" Value="Изменены">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="3"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OS_eyeLids_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.EyeLids}">
+                        <ComboBoxItem Content="Не изменены"/>
+                        <ComboBoxItem Content="Изменены"/>
+                    </ComboBox>
+                    <TextBox  Name="OS_eyeLids_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.EyeLidsDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeLids_comboBox, Path=SelectedValue}" Value="Не изменены">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeLids_comboBox, Path=SelectedValue}" Value="Изменены">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="4" Text="Рост ресниц" />
+                <StackPanel Grid.Column="1" Grid.Row="4"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_eyeLashes_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.EyeLashes}">
+                        <ComboBoxItem Content="Правильный"/>
+                        <ComboBoxItem Content="Неправильный"/>
+                    </ComboBox>
+                    <TextBox  Name="OD_eyeLashes_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.EyeLashesDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeLashes_comboBox, Path=SelectedValue}" Value="Правильный">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_eyeLashes_comboBox, Path=SelectedValue}" Value="Неправильный">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="4"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_eyeLashes_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.EyeLashes}">
+                        <ComboBoxItem Content="Правильный"/>
+                        <ComboBoxItem Content="Неправильный" />
+                    </ComboBox>
+                    <TextBox  Name="OS_eyeLashes_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.EyeLashesDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeLashes_comboBox, Path=SelectedValue}" Value="Правильный">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_eyeLashes_comboBox, Path=SelectedValue}" Value="Неправильный">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="5" Text="Пальпация слезных мешочков" />
+                <StackPanel Grid.Column="1" Grid.Row="5"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_palpation_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.Palpation}">
+                        <ComboBoxItem Content="Отделяемого нет" />
+                        <ComboBoxItem Content="Отделяемое есть" />
+                    </ComboBox>
+                    <TextBox  Name="OD_palpation_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.PalpationDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_palpation_comboBox, Path=SelectedValue}" Value="Отделяемого нет">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_palpation_comboBox, Path=SelectedValue}" Value="Отделяемое есть">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="5"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_palpation_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Palpation}">
+                        <ComboBoxItem Content="Отделяемого нет" />
+                        <ComboBoxItem Content="Отделяемое есть" />
+                    </ComboBox>
+                    <TextBox  Name="OS_palpation_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.PalpationDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_palpation_comboBox, Path=SelectedValue}" Value="Отделяемого нет">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_palpation_comboBox, Path=SelectedValue}" Value="Отделяемое есть">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="6" Text="Конъюнктива" />
+                <StackPanel Grid.Column="1" Grid.Row="6"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_conjunctiva_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.Conjunctiva}">
+                        <ComboBoxItem Content="Нет" />
+                        <ComboBoxItem Content="Есть"/>
+                    </ComboBox>
+                    <TextBox  Name="OD_conjunctiva_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.ConjunctivaDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_conjunctiva_comboBox, Path=SelectedValue}" Value="Нет">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_conjunctiva_comboBox, Path=SelectedValue}" Value="Есть">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="6"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OS_conjunctiva_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Conjunctiva}">
+                        <ComboBoxItem Content="Нет" />
+                        <ComboBoxItem Content="Есть"/>
+                    </ComboBox>
+                    <TextBox  Name="OS_conjunctiva_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.ConjunctivaDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_conjunctiva_comboBox, Path=SelectedValue}" Value="Нет">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_conjunctiva_comboBox, Path=SelectedValue}" Value="Есть">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="7" Text="Роговица" />
+                <StackPanel Grid.Column="1" Grid.Row="7"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_cornea_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                               SelectedValuePath="Content" SelectedValue="{Binding ODEye.Cornea}">
+                        <ComboBoxItem Content="Прозрачная" />
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OD_cornea_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                               Text="{Binding ODEye.CorneaDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_cornea_comboBox, Path=SelectedValue}" Value="Прозрачная">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_cornea_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="7"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_cornea_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Cornea}">
+                        <ComboBoxItem Content="Прозрачная" />
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OS_cornea_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                               Text="{Binding OSEye.CorneaDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_cornea_comboBox, Path=SelectedValue}" Value="Прозрачная">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_cornea_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="8" Text="Передняя камера" />
+                <StackPanel Grid.Column="1" Grid.Row="8"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_frontСamera_comboBox" Style="{StaticResource DefaultComboBox}"  SelectedValuePath="Content" SelectedValue="{Binding ODEye.FrontCamera}">
+                        <ComboBoxItem Content="Средней глубины"/>
+                        <ComboBoxItem Content="Глубокая" />
+                        <ComboBoxItem Content="Мелкая"/>
+                        <ComboBoxItem Content="Отсутствует" />
+                        <ComboBoxItem Content="Меньше средней"/>
+                        <ComboBoxItem Content="Неравномерно мелкая" />
+                        <ComboBoxItem Content="Неравномерно глубокая" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="8"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OS_frontСamera_comboBox" Style="{StaticResource DefaultComboBox}"  SelectedValuePath="Content" SelectedValue="{Binding OSEye.FrontCamera}" >
+                        <ComboBoxItem Content="Средней глубины"/>
+                        <ComboBoxItem Content="Глубокая" />
+                        <ComboBoxItem Content="Мелкая"/>
+                        <ComboBoxItem Content="Отсутствует" />
+                        <ComboBoxItem Content="Меньше средней"/>
+                        <ComboBoxItem Content="Неравномерно мелкая" />
+                        <ComboBoxItem Content="Неравномерно глубокая" />
+                    </ComboBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="9" Text="Влага" />
+                <StackPanel Grid.Column="1" Grid.Row="9"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_moisture_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.Moisture}">
+                        <ComboBoxItem Content="Чистая"/>
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OD_moisture_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.MoistureDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_moisture_comboBox, Path=SelectedValue}" Value="Чистая">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_moisture_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="9"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_moisture_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Moisture}">
+                        <ComboBoxItem Content="Чистая"/>
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OS_moisture_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.MoistureDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_moisture_comboBox, Path=SelectedValue}" Value="Чистая">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_moisture_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="10" Text="Угол передней камеры" />
+                <StackPanel Grid.Column="1" Grid.Row="10"  Style="{StaticResource TableStackPanel}" VerticalAlignment="Center">
+                    <ComboBox x:Name="OD_frontCameraAngle_comboBox" Style="{StaticResource DefaultComboBox}"  SelectedValuePath="Content" SelectedValue="{Binding ODEye.FrontCameraAngle}">
+                        <ComboBoxItem Content="Открыт"/>
+                        <ComboBoxItem Content="Закрыт" />
+                        <ComboBoxItem Content="Частично открыт" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="10"  Style="{StaticResource TableStackPanel}" VerticalAlignment="Center">
+                    <ComboBox x:Name="OS_frontCameraAngle_comboBox" Style="{StaticResource DefaultComboBox}" SelectedValuePath="Content" SelectedValue="{Binding OSEye.FrontCameraAngle}" >
+                        <ComboBoxItem Content="Открыт"/>
+                        <ComboBoxItem Content="Закрыт" />
+                        <ComboBoxItem Content="Частично открыт" />
+                    </ComboBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="11" Text="Радужка" />
+                <StackPanel Grid.Column="1" Grid.Row="11"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_iris_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.Iris}">
+                        <ComboBoxItem Content="Прозрачная" />
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OD_iris_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.IrisDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_iris_comboBox, Path=SelectedValue}" Value="Прозрачная">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_iris_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="11"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_iris_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Iris}">
+                        <ComboBoxItem Content="Прозрачная" />
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OS_iris_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.IrisDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_iris_comboBox, Path=SelectedValue}" Value="Прозрачная">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_iris_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="12" Text="Зрачок" />
+                <StackPanel Grid.Column="1" Grid.Row="12"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_pupil_comboBox" Style="{StaticResource DefaultComboBox}" SelectedValuePath="Content" SelectedValue="{Binding ODEye.Pupil}">
+                        <ComboBoxItem Content="Правильный"/>
+                        <ComboBoxItem Content="Неправильный" />
+                        <ComboBoxItem Content="Миоз"/>
+                        <ComboBoxItem Content="Мидриаз" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="12"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_pupil_comboBox" Style="{StaticResource DefaultComboBox}" SelectedValuePath="Content" SelectedValue="{Binding OSEye.Pupil}">
+                        <ComboBoxItem Content="Правильный"/>
+                        <ComboBoxItem Content="Неправильный" />
+                        <ComboBoxItem Content="Миоз"/>
+                        <ComboBoxItem Content="Мидриаз" />
+                    </ComboBox>
+                </StackPanel>
+                <TextBlock Style="{StaticResource TableTextBlock}" Grid.Column="0" Grid.Row="13" Text="Хрусталик" />
+                <StackPanel Grid.Column="1" Grid.Row="13"  Style="{StaticResource TableStackPanel}">
+                    <ComboBox x:Name="OD_chrystal_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding ODEye.Chrystal}">
+                        <ComboBoxItem Content="Прозрачный" />
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OD_chrystal_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding ODEye.ChrystalDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OD_chrystal_comboBox, Path=SelectedValue}" Value="Прозрачный">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OD_chrystal_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="13"  Style="{StaticResource TableStackPanel}" >
+                    <ComboBox x:Name="OS_chrystal_comboBox" 
+                              Style="{StaticResource DefaultComboBox}" 
+                              SelectedValuePath="Content" SelectedValue="{Binding OSEye.Chrystal}">
+                        <ComboBoxItem Content="Прозрачный" />
+                        <ComboBoxItem Content="Патология" />
+                    </ComboBox>
+                    <TextBox  Name="OS_chrystal_textBox" VerticalAlignment="Center" FontSize="14" Margin="5, 0, 5, 5" BorderBrush="{StaticResource myBlueColor}" SpellCheck.IsEnabled="True" Language="Ru-ru"
+                              Text="{Binding OSEye.ChrystalDetail}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=OS_chrystal_comboBox, Path=SelectedValue}" Value="Прозрачный">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=OS_chrystal_comboBox, Path=SelectedValue}" Value="Патология">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="5, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Background="LightSkyBlue"/>
+                <TextBlock Style="{StaticResource SubtitleTextBlock}" Grid.Column="0" Grid.Row="0" Text="Глазное дно" />
+                <TextBox Style="{StaticResource MidleTextBox}"  Grid.Column="1" Grid.Row="0" Text="{Binding ODEye.OcularFundus}"  />
+                <TextBox Style="{StaticResource MidleTextBox}"  Grid.Column="2" Grid.Row="0"  Text="{Binding OSEye.OcularFundus}"  />
+                <TextBlock Style="{StaticResource SubtitleTextBlock}" Grid.Column="0" Grid.Row="1" Text="ВГД" />
+                <TextBox PreviewTextInput="TextBox_PreviewTextInput"
+                         Style="{StaticResource DefaultTextBox}"  Grid.Column="1" Grid.Row="1"  
+                         Text="{Binding ODEye.Pressure, ConverterParameter=Int32, Converter={StaticResource medConverter}}" />
+                <TextBox PreviewTextInput="TextBox_PreviewTextInput"
+                        Style="{StaticResource DefaultTextBox}"  Grid.Column="2" Grid.Row="1" 
+                         Text="{Binding OSEye.Pressure, ConverterParameter=Int32, Converter={StaticResource medConverter}}"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

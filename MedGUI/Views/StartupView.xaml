@@ -1,0 +1,108 @@
+﻿<Page x:Class="MedGUI.Views.StartupView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:local="clr-namespace:MedGUI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="StartupView"
+      Background="Snow">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource HeadlineTextBlock}" Text="Главная"/>
+            <TextBlock Style="{StaticResource SubtitleTextBlock}" Text="О программе" HorizontalAlignment="Left"/>
+            <TextBlock Style="{StaticResource ContentTextBlock}"
+                       Text="Программа для формирования направления на ВМП. Направление формируется путем заполнения необходимых полей в каждом пункте."/>
+            <TextBlock Style="{StaticResource SubtitleTextBlock}" Text="Настройки" HorizontalAlignment="Left"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock 
+                    Text="Путь сохранения направления ВМП"
+                    Grid.Column="0" Grid.Row="0"
+                    Style="{StaticResource TableTextBlock}"/>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox 
+                        x:Name="path_textBox"
+                    Grid.Column="0" Grid.Row="0"
+                    IsReadOnly="True"
+                    Style="{StaticResource DefaultTextBox}"
+                    Text="{Binding Settings.SavePath}"/>
+                    <Button Content="..."
+                            Click="PathButton_Click"
+                        Grid.Column="1" Grid.Row="0"
+                        VerticalAlignment="Center"
+                        MaxHeight="20" Width="40"/>
+                </Grid>
+
+                <TextBlock 
+                    Text="Должность врача"
+                    Grid.Column="0" Grid.Row="1"
+                    Style="{StaticResource TableTextBlock}"/>
+                <TextBox 
+                    Grid.Column="1" Grid.Row="1"
+                    Style="{StaticResource DefaultTextBox}"
+                    Text="{Binding Settings.DoctorPosition}"/>
+
+                <TextBlock 
+                    Text="ФИО врача"
+                    Grid.Column="0" Grid.Row="2"
+                    Style="{StaticResource TableTextBlock}"/>
+                <TextBox 
+                    Grid.Column="1" Grid.Row="2"
+                    Style="{StaticResource DefaultTextBox}"
+                    Text="{Binding Settings.DoctorName}"/>
+
+                <TextBlock 
+                    Text="Должность главного врача"
+                    Grid.Column="0" Grid.Row="3"
+                    Style="{StaticResource TableTextBlock}"/>
+                <TextBox 
+                    Grid.Column="1" Grid.Row="3"
+                    Style="{StaticResource DefaultTextBox}"
+                    Height="40" TextWrapping="Wrap"
+                    Text="{Binding Settings.BossDoctorPosition}"/>
+
+                <TextBlock 
+                    Text="ФИО главного врача"
+                    Grid.Column="0" Grid.Row="4"
+                    Style="{StaticResource TableTextBlock}"/>
+                <TextBox 
+                    Grid.Column="1" Grid.Row="4"
+                    Style="{StaticResource DefaultTextBox}"
+                    Text="{Binding Settings.BossDoctorName}"/>
+                <Button Grid.Column="0" Grid.Row="5"
+                        Content="Сохранить"
+                        Style="{StaticResource FormButton}"
+                        Margin="5 20"
+                        HorizontalAlignment="Center"
+                        Command="{Binding SaveCommand}"/>
+                <TextBlock Grid.Column="1" Grid.Row="5"
+                           Text="{Binding Info}"
+                           Style="{StaticResource DefaultTextBlock}"
+                           FontStyle="Italic"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"/>
+                
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

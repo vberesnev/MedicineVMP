@@ -1,0 +1,107 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedGUI.Views"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="MedGUI.Views.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1000">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid ShowGridLines="False" Background="{StaticResource backColor}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" MinWidth="200" MaxWidth="200"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" MinHeight="30" MaxHeight="100"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="1*" MinHeight="30" MaxHeight="100"/>
+        </Grid.RowDefinitions>
+        <Border Background="Snow" Grid.Column="1" Grid.Row="1"/>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="0.4*"/>
+                <RowDefinition  Height="0.4*"/>
+                <RowDefinition  Height="0.4*"/>
+                <RowDefinition  Height="0.4*"/>
+                <RowDefinition  Height="0.4*"/>
+                <RowDefinition  Height="0.4*"/>
+                <RowDefinition  Height="*"/>
+                <RowDefinition Height="1.5*" MinHeight="220"/>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource DefaultButton}" Grid.Row="0" x:Name="patientBtn" Content="Пациент" Click="FirstMenuButton_Click"
+                    Command="{Binding SetInfoTextCommand}" CommandParameter="Заполните персональную информацию о пациенте..."/>
+            <Button Style="{StaticResource DefaultButton}" Grid.Row="1" x:Name="generalHistoryBtn" Content="Общий анамнез" Click="SecondMenuButton_Click"
+                    Command="{Binding SetInfoTextCommand}" CommandParameter="Заполните общий анамнез..."/>
+            <Button Style="{StaticResource DefaultButton}" Grid.Row="2" x:Name="objectivelyBtn" Content="Объективно" Click="ThirdMenuButton_Click"
+                    Command="{Binding SetInfoTextCommand}" CommandParameter="Заполните информкцию о глазах (Валечка, помоги сформулировать)..."/>
+            <Button Style="{StaticResource DefaultButton}" Grid.Row="3" x:Name="additionalResearchBtn" Content="Доп. исследования" Click="FourthMenuButton_Click"
+                    Command="{Binding SetInfoTextCommand}" CommandParameter="Заполните информацию о дополнительных исследованиях пациента..."/>
+            <Button Style="{StaticResource DefaultButton}" Grid.Row="4" x:Name="specialistsInspectionBtn" Content="Осмотр специалистов" Click="FifthMenuButton_Click"
+                    Command="{Binding SetInfoTextCommand}" CommandParameter="Заполните информацию об осмотрах пациента другими специалистами..."/>
+            <Button Style="{StaticResource DefaultButton}" Grid.Row="5" x:Name="diagnosisBtn" Content="Диагноз" Click="SixthMenuButton_Click"
+                    Command="{Binding SetInfoTextCommand}" CommandParameter="Заполните диагноз пациента..."/>
+            <DockPanel  Grid.Row="6">
+                <TextBox x:Name="info_textBox" 
+                         Text="{Binding InfoMessage}"
+                         Style="{StaticResource InfoTextBox}"/>
+            </DockPanel>
+            
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0"  
+                        Style="{StaticResource ImagineButton}" 
+                        VerticalAlignment="Bottom" 
+                        ToolTip="Напечатать направление на ВМП"
+                        Command="{Binding PrintCommand}">
+                    <Image Source="..\Resources\print.png"></Image>
+                </Button>
+                <Button  Grid.Column="1" Grid.Row="0"  
+                         Style="{StaticResource ImagineButton}" 
+                         VerticalAlignment="Bottom" 
+                         ToolTip="Сохранить направление на ВМП"
+                         Command="{Binding SaveCommand}">
+                    <Image Source="..\Resources\save.png"></Image>
+                </Button>
+                <Button Grid.Column="0" Grid.Row="1"  
+                        Style="{StaticResource ImagineButton}" 
+                        VerticalAlignment="Bottom" 
+                        ToolTip="Открыть направление на ВМП"
+                        Click="OpenVMPButton_Click">
+                    <Image Source="..\Resources\open.png"></Image>
+                </Button>
+                <Button  Grid.Column="1" Grid.Row="1"  
+                         Style="{StaticResource ImagineButton}" 
+                         VerticalAlignment="Bottom" 
+                         ToolTip="Очистить текущее направление"
+                         Command="{Binding RefreshCommand}" Click="RefreshButton_Click">
+                    <Image Source="..\Resources\refresh.png"></Image>
+                </Button>
+            </Grid>
+        </Grid>
+        <ScrollViewer Grid.Column="1" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" MaxWidth="50"></ColumnDefinition>
+                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*" MaxWidth="100"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Frame x:Name="MainFrame" Grid.Column="1" Grid.Row="0" NavigationUIVisibility="Hidden" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -1,0 +1,94 @@
+﻿<Page x:Class="MedGUI.Views.GeneralHistoryView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:local="clr-namespace:MedGUI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="GeneralHistoryView"
+      Background="Snow"
+      ShowsNavigationUI="False">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource HeadlineTextBlock}" Text="Общий анамнез"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                    <TextBlock  Style="{StaticResource DefaultTextBlock}" Text="Жалобы"/>
+                    <TextBox Style="{StaticResource MidleTextBox}"
+                             Text="{Binding Path=GeneralHistory.Complaints}"
+                             />
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="1">
+                    <TextBlock  Style="{StaticResource DefaultTextBlock}" Text="Анамнез заболевания"/>
+                    <TextBox Style="{StaticResource HugeTextBox}"
+                             Text="{Binding Path=GeneralHistory.DiseaseHistory}"
+                             />
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="2">
+                    <CheckBox  x:Name="operationsCheckBox" Content="Операции"
+                               Style="{StaticResource SubtitleCheckBox}" 
+                               IsChecked="{Binding IsOperations}"
+                               Unchecked="ClearTextBoxesByCheckBoxes" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding OperationsUncheckedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </CheckBox>
+                    <TextBox x:Name="operations_textBox"
+                             Style="{StaticResource MidleTextBox}" 
+                             IsEnabled="{Binding IsChecked, ElementName=operationsCheckBox}"
+                             Text="{Binding Path=GeneralHistory.Operations}"
+                             />
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="3">
+                    <CheckBox  Style="{StaticResource SubtitleCheckBox}" 
+                               x:Name="chronicDiseasesCheckBox" Content="Хронические заболевания"
+                                IsChecked="{Binding IsChronicDiseases}"
+                               Unchecked="ClearTextBoxesByCheckBoxes">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding ChronicDiseasesUncheckedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </CheckBox>
+                    <TextBox  x:Name="chronicDiseases_textBox" 
+                            Style="{StaticResource MidleTextBox}" 
+                             IsEnabled="{Binding IsChecked, ElementName=chronicDiseasesCheckBox}"
+                             Text="{Binding Path=GeneralHistory.ChronicDiseases}"
+                             />
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="4">
+                    <CheckBox  Style="{StaticResource SubtitleCheckBox}" 
+                               x:Name="allergyHistoryCheckBox" Content="Аллергический анамнез"
+                               IsChecked="{Binding IsAllergyHistory}"
+                               Unchecked="ClearTextBoxesByCheckBoxes">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Unchecked">
+                                <i:InvokeCommandAction Command="{Binding AllergyHistoryUncheckedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </CheckBox>
+                    <TextBox x:Name="allergyHistory_textBox"  
+                             Style="{StaticResource MidleTextBox}" 
+                             IsEnabled="{Binding IsChecked, ElementName=allergyHistoryCheckBox}"
+                             Text="{Binding Path=GeneralHistory.AllergyHistory}"
+                             />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

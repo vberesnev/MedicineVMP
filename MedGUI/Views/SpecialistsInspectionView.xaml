@@ -1,0 +1,75 @@
+﻿<Page x:Class="MedGUI.Views.SpecialistsInspectionView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MedGUI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="750"
+      Title="SpecialistsInspectionView"
+      Background="Snow">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource HeadlineTextBlock}" Text="Осмотр специалистов"/>
+            <Grid Margin="5, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox   Grid.Column="0" Grid.Row="0"
+                            Style="{StaticResource MidleTextBox}"
+                            Text="{Binding SelectedSpecialistInspection.Specialist}"    />
+                <DatePicker Style="{StaticResource DefaultDatePicker}"  VerticalAlignment="Center"
+                         Grid.Column="1" Grid.Row="0" 
+                         SelectedDate="{Binding
+                         Path=SelectedSpecialistInspection.Date,
+                         Mode=TwoWay}"/>
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox   Grid.Column="0" TextWrapping="Wrap" FontSize="12"
+                        Style="{StaticResource MidleTextBox}"
+                        Text="{Binding SelectedSpecialistInspection.Result}" />
+                    <Button   Grid.Column="1" Grid.Row="0" Content="Добавить" Margin="5"
+                              Style="{StaticResource FormButton}"
+                              Command="{Binding AddSpecialistsInspectionCommand}"
+                              CommandParameter="{Binding SelectedSpecialistInspection}"/>
+                </Grid>
+            </Grid>
+            <Grid Margin="5, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0" Grid.Row="0" 
+                          Name="SpecialistsInspectionsList" 
+                          ItemsSource="{Binding SpecialistInspections}"
+                          Style="{StaticResource ListViewStyle}"
+                          ItemContainerStyle="{StaticResource ListViewItemContainerStyle}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Specialist}" Width="140">Специалист</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Date, StringFormat='dd.MM.yyyy'}" Width="140">Дата</GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Result}" Width="360">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  Height="60" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                                Заключение
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button   Grid.Column="1" Grid.Row="0" Content="Удалить" Margin="5"
+                          Style="{StaticResource FormButton}"
+                          Command="{Binding DeleteSpecialistsInspectionCommand}"
+                          CommandParameter="{Binding SelectedItem, ElementName=SpecialistsInspectionsList}"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
