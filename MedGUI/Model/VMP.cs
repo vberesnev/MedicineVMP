@@ -13,7 +13,7 @@ namespace MedGUI.Model
 {
     public class VMP
     {
-        
+        //Класс ВМП
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }
         [ForeignKey("Patient")]
