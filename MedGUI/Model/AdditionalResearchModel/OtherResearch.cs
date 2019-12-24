@@ -15,14 +15,17 @@ namespace MedGUI.Model.AdditionalResearchModel
         public int AdditionalResearchId { get; set; }
         public AdditionalResearch AdditionalResearch { get; set; }
         public string Research { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public string Result { get; set; }
 
         public OtherResearch() { }
 
         public string Report()
         {
-            return $"{Research} от {Date.ToShortDateString()}: {Result}";
+            if (Date != null)
+                return $"{Research} от {Date?.ToShortDateString()}: {Result}";
+            else
+                return $"{Research}: {Result}";
         }
     }
 }

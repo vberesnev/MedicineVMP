@@ -62,21 +62,21 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="1" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.Hb, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.Hb}"
                               />
                     <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="г/л"/>
                     <TextBlock Grid.Column="3" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="э/ц"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="4" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.E_C, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.E_C}"
                               />
                     <TextBlock Grid.Column="5" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="е12/л"/>
                     <TextBlock Grid.Column="6" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="ЦП"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="7" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.CP, Converter={StaticResource medConverter}}"      
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.CP}"      
                         />
 
                     <!---->
@@ -84,7 +84,7 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="1" Grid.Row="1"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.L_C, Converter={StaticResource medConverter}}"      
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.L_C}"      
                         />
                     <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="е9/л"/>
                     <!-- -->
@@ -92,7 +92,7 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="4" Grid.Row="2"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.T_C, Converter={StaticResource medConverter}}"      
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.T_C}"      
                               />
                     <TextBlock Grid.Column="5" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="е9/л"/>
                 </Grid>
@@ -117,14 +117,14 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="1" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.P_YA, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.P_YA}"
                               />
                     <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
                     <TextBlock Grid.Column="3" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="с/я"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="4" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.C_YA, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.C_YA}"
                               />
                     <TextBlock Grid.Column="5" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
                     <!-- -->
@@ -132,14 +132,14 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="7" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.E_O, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.E_O}"
                               />
                     <TextBlock Grid.Column="8" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
                     <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="л/ф"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="1" Grid.Row="1"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.L_F, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.L_F}"
                               />
                     <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
                     <!-- -->
@@ -147,14 +147,14 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="4" Grid.Row="1"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.MO, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.MO}"
                               />
                     <TextBlock Grid.Column="5" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="%"/>
                     <TextBlock Grid.Column="6" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="СОЭ"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="7" Grid.Row="1"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.COE, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.GeneralBloodAnalysis.COE}"
                               />
                     <TextBlock Grid.Column="8" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="мм/ч"/>
                 </Grid>
@@ -190,27 +190,27 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="1" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Creatinine, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Creatinine}"
                               />
                     <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
                     <TextBlock Grid.Column="3" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="мочевина"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                               Grid.Column="4" Grid.Row="0"
                               Style="{StaticResource TableTextBox}"
-                              Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Urea, Converter={StaticResource medConverter}}"
+                              Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Urea}"
                               />
                     <TextBlock Grid.Column="5" Grid.Row="0" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
                     <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="общий ХС"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                 Grid.Column="1" Grid.Row="1"
                                   Style="{StaticResource TableTextBox}"
-                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.CommonXC, Converter={StaticResource medConverter}}"/>
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.CommonXC}"/>
                     <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
                     <TextBlock Grid.Column="3" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="глюкоза"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                   Grid.Column="4" Grid.Row="1"
                                   Style="{StaticResource TableTextBox}"
-                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Glucose, Converter={StaticResource medConverter}}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Glucose}"
                                   />
                     <TextBlock Grid.Column="5" Grid.Row="1" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
                     <!-- -->
@@ -218,14 +218,14 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                   Grid.Column="1" Grid.Row="2"
                                   Style="{StaticResource TableTextBox}"
-                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TotalBilirubin, Converter={StaticResource medConverter}}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TotalBilirubin}"
                                   />
                     <TextBlock Grid.Column="2" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
                     <TextBlock Grid.Column="3" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="общий белок"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                       Grid.Column="4" Grid.Row="2"
                                       Style="{StaticResource TableTextBox}"
-                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TotalProtein, Converter={StaticResource medConverter}}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TotalProtein}"
                                       />
                     <TextBlock Grid.Column="5" Grid.Row="2" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
 
@@ -234,14 +234,14 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                   Grid.Column="1" Grid.Row="3"
                                   Style="{StaticResource TableTextBox}"
-                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Albumen, Converter={StaticResource medConverter}}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.Albumen}"
                                   />
                     <TextBlock Grid.Column="2" Grid.Row="3" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="г/л"/>
                     <TextBlock Grid.Column="3" Grid.Row="3" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="АЛТ"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                   Grid.Column="4" Grid.Row="3"
                                   Style="{StaticResource TableTextBox}"
-                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.ALT, Converter={StaticResource medConverter}}"
+                                  Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.ALT}"
                                   />
                     <TextBlock Grid.Column="5" Grid.Row="3" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="Ед."/>
                     <!-- -->
@@ -249,14 +249,14 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                       Grid.Column="1" Grid.Row="4"
                                       Style="{StaticResource TableTextBox}"
-                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.ACT, Converter={StaticResource medConverter}}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.ACT}"
                                       />
                     <TextBlock Grid.Column="2" Grid.Row="4" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="Ед."/>
                     <TextBlock Grid.Column="3" Grid.Row="4" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="ТГ"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                       Grid.Column="4" Grid.Row="4"
                                       Style="{StaticResource TableTextBox}"
-                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TG, Converter={StaticResource medConverter}}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.TG}"
                                       />
                     <TextBlock Grid.Column="5" Grid.Row="4" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="мкмоль/л"/>
                     <!-- -->
@@ -264,14 +264,14 @@
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                       Grid.Column="1" Grid.Row="5"
                                       Style="{StaticResource TableTextBox}"
-                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.LPVP, Converter={StaticResource medConverter}}"
+                                      Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.LPVP}"
                                       />
                     <TextBlock Grid.Column="2" Grid.Row="5" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
                     <TextBlock Grid.Column="3" Grid.Row="5" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Right" Text="ЛПНП"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput"
                                           Grid.Column="4" Grid.Row="5"
                                           Style="{StaticResource TableTextBox}"
-                                          Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.LPNP, Converter={StaticResource medConverter}}"
+                                          Text="{Binding AdditionalResearch.ChemistryBloodAnalysis.LPNP}"
                                           />
                     <TextBlock Grid.Column="5" Grid.Row="5" Style="{StaticResource TableTextBlock}" HorizontalAlignment="Left" Text="ммоль/л"/>
                 </Grid>
@@ -328,7 +328,7 @@
                             Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Color}"/>
                     <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource TableTextBlock}"  Text="Плотность"/>
                     <TextBox  PreviewTextInput="TextBox_PreviewTextInput" 
-                                  Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Density, Converter={StaticResource medConverter}}"
+                                  Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Density}"
                                   Grid.Column="1" Grid.Row="1"
                                   Style="{StaticResource TableTextBox}"/>
                     <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource TableTextBlock}"  Text="Реакция"/>
@@ -364,7 +364,7 @@
                             </Style>
                         </StackPanel.Style>
                         <TextBox    PreviewTextInput="TextBox_PreviewTextInput"
-                                    Text="{Binding AdditionalResearch.GeneralUrineAnalysis.ProteinDetail}"
+                                    Text="{Binding AdditionalResearch.GeneralUrineAnalysis.ProteinWeight}"
                                     Style="{StaticResource TableTextBox}" Width="50" 
                                     />
                         <TextBlock  Style="{StaticResource TableTextBlock}" Text="г."/>
@@ -381,17 +381,17 @@
                     <StackPanel  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Orientation="Horizontal">
                         <TextBlock  Style="{StaticResource TableTextBlock}" Text="л/ц"/>
                         <TextBox PreviewTextInput="TextBox_PreviewTextInput"    
-                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.L_C, Converter={StaticResource medConverter}}"
+                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.L_C}"
                                 Style="{StaticResource TableTextBox}" Width="45" 
                                 />
                         <TextBlock  Style="{StaticResource TableTextBlock}" Text="в п.зр., эпителиальные клетки"/>
                         <TextBox PreviewTextInput="TextBox_PreviewTextInput"    
-                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.EpithelialCells, Converter={StaticResource medConverter}}"
+                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.EpithelialCells}"
                                 Style="{StaticResource TableTextBox}" Width="45" 
                                 />
                         <TextBlock  Style="{StaticResource TableTextBlock}" Text="слизь"/>
                         <TextBox PreviewTextInput="TextBox_PreviewTextInput"    
-                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Slime, Converter={StaticResource medConverter}}"
+                                Text="{Binding AdditionalResearch.GeneralUrineAnalysis.Slime}"
                                 Style="{StaticResource TableTextBox}" Width="45" 
                                 />
                     </StackPanel>

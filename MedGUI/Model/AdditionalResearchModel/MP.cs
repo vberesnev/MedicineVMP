@@ -22,5 +22,10 @@ namespace MedGUI.Model.AdditionalResearchModel
             this.Date = m.Date;
             this.Result = m.Result;
         }
+
+        public bool IsNull()
+        {
+            return Date == null & string.IsNullOrEmpty(Result);
+        }
     }
 }

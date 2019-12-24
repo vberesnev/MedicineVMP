@@ -132,109 +132,112 @@ namespace MedGUI.Model
                 //Данные дополнительных исследований
                 //Общий анализ крови
 
-                if (VMP.AdditionalResearch.GeneralBloodAnalysis.Date != null)
+                if (VMP.AdditionalResearch.GeneralBloodAnalysis.IsNull())
                 {
-                    ReplaceText(app, "#GeneralBloodDate", VMP.AdditionalResearch.GeneralBloodAnalysis.Date?.ToShortDateString());
-                    ReplaceText(app, "#Hb", VMP.AdditionalResearch.GeneralBloodAnalysis.Hb.ToString());
-                    ReplaceText(app, "#E_C", VMP.AdditionalResearch.GeneralBloodAnalysis.E_C.ToString());
-                    ReplaceText(app, "#CP", VMP.AdditionalResearch.GeneralBloodAnalysis.CP.ToString());
-                    ReplaceText(app, "#L_C", VMP.AdditionalResearch.GeneralBloodAnalysis.L_C.ToString());
-                    ReplaceText(app, "#T_C", VMP.AdditionalResearch.GeneralBloodAnalysis.T_C.ToString());
-                    ReplaceText(app, "#P_YA", VMP.AdditionalResearch.GeneralBloodAnalysis.P_YA.ToString());
-                    ReplaceText(app, "#C_YA", VMP.AdditionalResearch.GeneralBloodAnalysis.C_YA.ToString());
-                    ReplaceText(app, "#E_O", VMP.AdditionalResearch.GeneralBloodAnalysis.E_O.ToString());
-                    ReplaceText(app, "#L_F", VMP.AdditionalResearch.GeneralBloodAnalysis.L_F.ToString());
-                    ReplaceText(app, "#MO", VMP.AdditionalResearch.GeneralBloodAnalysis.MO.ToString());
-                    ReplaceText(app, "#COE ", VMP.AdditionalResearch.GeneralBloodAnalysis.COE.ToString());
+                    ClearText(doc, "GBA");
                 }
                 else
                 {
-                    ClearText(doc, "GBA");
+                    ReplaceText(app, "#GeneralBloodDate", VMP.AdditionalResearch.GeneralBloodAnalysis.Date == null ? ": " : $" от {VMP.AdditionalResearch.GeneralBloodAnalysis.Date?.ToShortDateString()}: ");
+                    ReplaceText(app, "#Hb", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.Hb) ? "" : $"Hb {VMP.AdditionalResearch.GeneralBloodAnalysis.Hb}; ");
+                    ReplaceText(app, "#E_C", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.E_C) ? "" : $"э/ц {VMP.AdditionalResearch.GeneralBloodAnalysis.E_C}х10^12/л; ");
+                    ReplaceText(app, "#CP", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.CP) ? "" : $"ЦП {VMP.AdditionalResearch.GeneralBloodAnalysis.CP}; ");
+                    ReplaceText(app, "#L_C", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.L_C) ? "" : $"л/ц {VMP.AdditionalResearch.GeneralBloodAnalysis.L_C}х10^9/л; ");
+                    ReplaceText(app, "#T_C", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.T_C) ? "" : $"т/ц {VMP.AdditionalResearch.GeneralBloodAnalysis.T_C}х10^9/л; ");
+                    ReplaceText(app, "#P_YA", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.P_YA) ? "" : $"п/я {VMP.AdditionalResearch.GeneralBloodAnalysis.P_YA}%; ");
+                    ReplaceText(app, "#C_YA", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.C_YA) ? "" : $"с/я {VMP.AdditionalResearch.GeneralBloodAnalysis.C_YA}%; ");
+                    ReplaceText(app, "#E_O", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.E_O) ? "" : $"э/о {VMP.AdditionalResearch.GeneralBloodAnalysis.E_O}%; ");
+                    ReplaceText(app, "#L_F", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.L_F) ? "" : $"л/ф {VMP.AdditionalResearch.GeneralBloodAnalysis.L_F}%; ");
+                    ReplaceText(app, "#MO", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.MO) ? "" : $"мо {VMP.AdditionalResearch.GeneralBloodAnalysis.MO}%; ");
+                    ReplaceText(app, "#COE", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralBloodAnalysis.COE) ? "" : $"СОЭ {VMP.AdditionalResearch.GeneralBloodAnalysis.COE}мм/ч; ");
                 }
 
 
                 //Биохимический анализ крови
-                if (VMP.AdditionalResearch.ChemistryBloodAnalysis.Date != null)
-                {
-                    ReplaceText(app, "#ChemistryBloodDate", VMP.AdditionalResearch.ChemistryBloodAnalysis.Date?.ToShortDateString());
-                    ReplaceText(app, "#Creatinine", VMP.AdditionalResearch.ChemistryBloodAnalysis.Creatinine.ToString());
-                    ReplaceText(app, "#ChemistryBloodUrea ", VMP.AdditionalResearch.ChemistryBloodAnalysis.Urea.ToString());
-                    ReplaceText(app, "#CommonXC", VMP.AdditionalResearch.ChemistryBloodAnalysis.CommonXC.ToString());
-                    ReplaceText(app, "#ChemistryBloodGlucose", VMP.AdditionalResearch.ChemistryBloodAnalysis.Glucose.ToString());
-                    ReplaceText(app, "#TotalBilirubin", VMP.AdditionalResearch.ChemistryBloodAnalysis.TotalBilirubin.ToString());
-                    ReplaceText(app, "#TotalProtein", VMP.AdditionalResearch.ChemistryBloodAnalysis.TotalProtein.ToString());
-                    ReplaceText(app, "#Albumen", VMP.AdditionalResearch.ChemistryBloodAnalysis.Albumen.ToString());
-                    ReplaceText(app, "#ALT", VMP.AdditionalResearch.ChemistryBloodAnalysis.ALT.ToString());
-                    ReplaceText(app, "#ACT", VMP.AdditionalResearch.ChemistryBloodAnalysis.ACT.ToString());
-                    ReplaceText(app, "#TG", VMP.AdditionalResearch.ChemistryBloodAnalysis.TG.ToString());
-                    ReplaceText(app, "#LPVP", VMP.AdditionalResearch.ChemistryBloodAnalysis.LPVP.ToString());
-                    ReplaceText(app, "#LPNP", VMP.AdditionalResearch.ChemistryBloodAnalysis.LPNP.ToString());
-                }
-                else
+                if (VMP.AdditionalResearch.ChemistryBloodAnalysis.IsNull())
                 {
                     ClearText(doc, "CBA");
                 }
+                else
+                {
+                    ReplaceText(app, "#ChemistryBloodDate", VMP.AdditionalResearch.ChemistryBloodAnalysis.Date == null ? ": " : $" от {VMP.AdditionalResearch.ChemistryBloodAnalysis.Date?.ToShortDateString()}: ");
+                    ReplaceText(app, "#Creatinine", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.Creatinine) ? "" : $"креатинин {VMP.AdditionalResearch.ChemistryBloodAnalysis.Creatinine} ммоль/л; ");
+                    ReplaceText(app, "#ChemistryBloodUrea", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.Urea) ? "" : $"мочевина {VMP.AdditionalResearch.ChemistryBloodAnalysis.Urea} ммоль/л; ");
+                    ReplaceText(app, "#CommonXC", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.CommonXC) ? "" : $"общих ХС {VMP.AdditionalResearch.ChemistryBloodAnalysis.CommonXC} ммоль/л; ");
+                    ReplaceText(app, "#ChemistryBloodGlucose", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.Glucose) ? "" : $"глюкоза {VMP.AdditionalResearch.ChemistryBloodAnalysis.Glucose} ммоль/л; ");
+                    ReplaceText(app, "#TotalBilirubin", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.TotalBilirubin) ? "" : $"общий билирубин {VMP.AdditionalResearch.ChemistryBloodAnalysis.TotalBilirubin} ммоль/л; ");
+                    ReplaceText(app, "#TotalProtein", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.TotalProtein) ? "" : $"общий белок {VMP.AdditionalResearch.ChemistryBloodAnalysis.TotalProtein} г/л; ");
+                    ReplaceText(app, "#Albumen", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.Albumen) ? "" : $"альбумин {VMP.AdditionalResearch.ChemistryBloodAnalysis.Albumen} г/л; ");
+                    ReplaceText(app, "#ALT", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.ALT) ? "" : $"АЛТ {VMP.AdditionalResearch.ChemistryBloodAnalysis.ALT} Ед; ");
+                    ReplaceText(app, "#ACT", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.ACT) ? "" : $"АСТ {VMP.AdditionalResearch.ChemistryBloodAnalysis.ACT} Ед; ");
+                    ReplaceText(app, "#TG", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.TG) ? "" : $"ТГ {VMP.AdditionalResearch.ChemistryBloodAnalysis.TG} мкмоль/л; ");
+                    ReplaceText(app, "#LPVP", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.LPVP) ? "" : $"ЛПВП {VMP.AdditionalResearch.ChemistryBloodAnalysis.LPVP} ммоль/л; ");
+                    ReplaceText(app, "#LPNP", string.IsNullOrEmpty(VMP.AdditionalResearch.ChemistryBloodAnalysis.LPNP) ? "" : $"ЛПНП {VMP.AdditionalResearch.ChemistryBloodAnalysis.LPNP} ммоль/л; ");
+                }
 
                 //MP
-                if (VMP.AdditionalResearch.MP.Date != null)
+                if (VMP.AdditionalResearch.MP.IsNull())
                 {
-                    ReplaceText(app, "#MPDate", VMP.AdditionalResearch.MP.Date?.ToShortDateString());
-                    ReplaceText(app, "#MPResult", VMP.AdditionalResearch.MP.Result);
+                    ClearText(doc, "MP");
+                    
                 }
                 else
                 {
-                    ClearText(doc, "MP");
+                    ReplaceText(app, "#MPDate", VMP.AdditionalResearch.MP.Date == null ? ": " : $" от {VMP.AdditionalResearch.MP.Date?.ToShortDateString()}: ");
+                    ReplaceText(app, "#MPResult", string.IsNullOrEmpty(VMP.AdditionalResearch.MP.Result) ? "" : $" {VMP.AdditionalResearch.MP.Result} результат; ");
                 }
 
                 //Общий анализ мочи
-                if (VMP.AdditionalResearch.GeneralUrineAnalysis.Date != null)
-                {
-                    ReplaceText(app, "#GeneralUrineDate", VMP.AdditionalResearch.GeneralUrineAnalysis.Date?.ToShortDateString());
-                    ReplaceText(app, "#UrineColor", VMP.AdditionalResearch.GeneralUrineAnalysis.Color);
-                    ReplaceText(app, "#UrineDensity", VMP.AdditionalResearch.GeneralUrineAnalysis.Density.ToString());
-                    ReplaceText(app, "#UrineReaction", VMP.AdditionalResearch.GeneralUrineAnalysis.Reaction.ToLower());
-                    ReplaceText(app, "#UrineProtein", GetUrineProtein());
-                    ReplaceText(app, "#UrineGlucose", VMP.AdditionalResearch.GeneralUrineAnalysis.Glucose.ToLower());
-                    ReplaceText(app, "#Urine_L_C", VMP.AdditionalResearch.GeneralUrineAnalysis.L_C.ToString());
-                    ReplaceText(app, "#UrineEpithelialCells", VMP.AdditionalResearch.GeneralUrineAnalysis.EpithelialCells.ToString());
-                    ReplaceText(app, "#UrineSlime", VMP.AdditionalResearch.GeneralUrineAnalysis.Slime.ToString());
-                }
-                else
+                if (VMP.AdditionalResearch.GeneralUrineAnalysis.IsNull())
                 {
                     ClearText(doc, "GUA");
                 }
+                else
+                {
+                    ReplaceText(app, "#GeneralUrineDate", VMP.AdditionalResearch.GeneralUrineAnalysis.Date == null ? ": " : $" от {VMP.AdditionalResearch.GeneralUrineAnalysis.Date?.ToShortDateString()}: ");
+                    ReplaceText(app, "#UrineColor", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.Color) ? "" : $"цвет {VMP.AdditionalResearch.GeneralUrineAnalysis.Color.ToLower()}, ");
+                    ReplaceText(app, "#UrineDensity", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.Density) ? "" : $"плотность {VMP.AdditionalResearch.GeneralUrineAnalysis.Density.ToLower()}, ");
+                    ReplaceText(app, "#UrineReaction", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.Reaction) ? "" : $"реакция {VMP.AdditionalResearch.GeneralUrineAnalysis.Reaction.ToLower()}, ");
+                    ReplaceText(app, "#UrineProtein", (string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.Protein) && string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.ProteinWeight)) ? "" : $"{GetUrineProtein()}, ");
+                    ReplaceText(app, "#UrineGlucose", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.Glucose) ? "" : $"глюкоза {VMP.AdditionalResearch.GeneralUrineAnalysis.Glucose.ToLower()}, ");
+                    ReplaceText(app, "#Urine_L_C", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.L_C) ? "" : $"л/ц {VMP.AdditionalResearch.GeneralUrineAnalysis.L_C} в п.зр., ");
+                    ReplaceText(app, "#UrineEpithelialCells", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.EpithelialCells) ? "" : $"эпителиальные клетки {VMP.AdditionalResearch.GeneralUrineAnalysis.EpithelialCells}, ");
+                    ReplaceText(app, "#UrineSlime", string.IsNullOrEmpty(VMP.AdditionalResearch.GeneralUrineAnalysis.Slime) ? "" : $"слизь {VMP.AdditionalResearch.GeneralUrineAnalysis.Slime.ToLower()}");
+                }
 
                 //Кал на я/г
-                if (VMP.AdditionalResearch.Feces.Date != null)
-                {
-                    ReplaceText(app, "#FecesDate", VMP.AdditionalResearch.Feces.Date?.ToShortDateString());
-                    ReplaceText(app, "#FecesResult", VMP.AdditionalResearch.Feces.Result);
-                }
-                else
+                if (VMP.AdditionalResearch.Feces.IsNull())
                 {
                     ClearText(doc, "FA");
                 }
+                else
+                {
+                    ReplaceText(app, "#FecesDate", VMP.AdditionalResearch.Feces.Date == null ? ": " : $" от {VMP.AdditionalResearch.Feces.Date?.ToShortDateString()}: ");
+                    ReplaceText(app, "#FecesResult", string.IsNullOrEmpty(VMP.AdditionalResearch.Feces.Result) ? "" : $"{VMP.AdditionalResearch.GeneralUrineAnalysis.Color}.");
+                }
 
                 //ЭКГ
-                if (VMP.AdditionalResearch.ECG.Date != null)
+                if (VMP.AdditionalResearch.ECG.IsNull())
                 {
-                    ReplaceText(app, "#ECGDate", VMP.AdditionalResearch.ECG.Date?.ToShortDateString());
-                    ReplaceText(app, "#ECGRhythm", VMP.AdditionalResearch.ECG.Rhythm);
-                    ReplaceText(app, "#ECGRate", VMP.AdditionalResearch.ECG.Rate.ToString());
-                    ReplaceText(app, "#ECGAdditionalInfo", GetECGAdditionalInfo());
+                    ClearText(doc, "ECG");
                 }
                 else
                 {
-                    ClearText(doc, "ECG");
+                    ReplaceText(app, "#ECGDate", VMP.AdditionalResearch.ECG.Date == null ? ": " : $" от {VMP.AdditionalResearch.ECG.Date?.ToShortDateString()}: ");
+                    ReplaceText(app, "#ECGRhythm", string.IsNullOrEmpty(VMP.AdditionalResearch.ECG.Rhythm) ? "" : $"ритм {VMP.AdditionalResearch.ECG.Rhythm.ToLower()}, ");
+                    ReplaceText(app, "#ECGRate", VMP.AdditionalResearch.ECG.Rate == 0 ? "" : $"ЧСС {VMP.AdditionalResearch.ECG.Rate} уд/ мин. ");
+                    ReplaceText(app, "#ECGAdditionalInfo", string.IsNullOrEmpty(VMP.AdditionalResearch.ECG.AdditionalInfo) ? "" : $"{VMP.AdditionalResearch.ECG.AdditionalInfo}");
                 }
                     
 
                 //Дополнительные исследования
-                ReplaceList(app, "#AdditionalResearches", VMP.AdditionalResearch.OtherResearches);
+                if (VMP.AdditionalResearch.OtherResearches != null)
+                    ReplaceList(app, "#AdditionalResearches", VMP.AdditionalResearch.OtherResearches);
 
 
                 //Осмотр специалистов
-                ReplaceList(app, "#SpecialistInspections", VMP.SpecialistInspections);
+                if (VMP.SpecialistInspections != null)
+                    ReplaceList(app, "#SpecialistInspections", VMP.SpecialistInspections);
 
                 //Диагноз
                 ReplaceText(app, "#MKB", VMP.Diagnos.DiagnosisCode);
@@ -292,7 +295,7 @@ namespace MedGUI.Model
         private static string GetUrineProtein()
         {
             return VMP.AdditionalResearch.GeneralUrineAnalysis.Protein == "Отрицательный" ?
-                VMP.AdditionalResearch.GeneralUrineAnalysis.Protein.ToLower() : $"{VMP.AdditionalResearch.GeneralUrineAnalysis.ProteinDetail}г.";
+                $"белок отрицательный" : $"белок {VMP.AdditionalResearch.GeneralUrineAnalysis.ProteinWeight}г.";
         }
 
         private static void GetObjectively(Word.Application app, List<EyeSide> eyeSides)

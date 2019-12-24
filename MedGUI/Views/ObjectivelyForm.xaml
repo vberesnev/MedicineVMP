@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:MedGUI.Views"
       mc:Ignorable="d" d:DesignWidth="600"
       Title="ObjectivelyForm"
-      Background="Snow" Height="1030">
+      Background="Snow" Height="1070">
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Unloaded">
@@ -664,8 +664,8 @@
                 </Grid.RowDefinitions>
                 <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Background="LightSkyBlue"/>
                 <TextBlock Style="{StaticResource SubtitleTextBlock}" Grid.Column="0" Grid.Row="0" Text="Глазное дно" />
-                <TextBox Style="{StaticResource MidleTextBox}"  Grid.Column="1" Grid.Row="0" Text="{Binding ODEye.OcularFundus}"  />
-                <TextBox Style="{StaticResource MidleTextBox}"  Grid.Column="2" Grid.Row="0"  Text="{Binding OSEye.OcularFundus}"  />
+                <TextBox Style="{StaticResource MidleTextBox}" Height="100"  Grid.Column="1" Grid.Row="0" Text="{Binding ODEye.OcularFundus}"  />
+                <TextBox Style="{StaticResource MidleTextBox}" Height="100" Grid.Column="2" Grid.Row="0"  Text="{Binding OSEye.OcularFundus}"  />
                 <TextBlock Style="{StaticResource SubtitleTextBlock}" Grid.Column="0" Grid.Row="1" Text="ВГД" />
                 <TextBox PreviewTextInput="TextBox_PreviewTextInput"
                          Style="{StaticResource DefaultTextBox}"  Grid.Column="1" Grid.Row="1"  

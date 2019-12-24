@@ -13,15 +13,14 @@ namespace MedGUI.Model.AdditionalResearchModel
         public int? Id { get; set; }
         public DateTime? Date { get; set; }
         public string Color { get; set; }
-        public double Density { get; set; }
+        public string Density { get; set; }
         public string Reaction { get; set; }
         public string Protein { get; set; }
-        public string ProteinDetail { get; set; }
-        public double ProteinWeight { get; set; }
+        public string ProteinWeight { get; set; }
         public string Glucose { get; set; }
-        public double L_C { get; set; }
-        public double EpithelialCells { get; set; }
-        public double Slime { get; set; }
+        public string L_C { get; set; }
+        public string EpithelialCells { get; set; }
+        public string Slime { get; set; }
 
         public ICollection<AdditionalResearch> AdditionalResearches { get; set; }
 
@@ -33,12 +32,21 @@ namespace MedGUI.Model.AdditionalResearchModel
             this.Density = g.Density;
             this.Reaction = g.Reaction;
             this.Protein = g.Protein;
-            this.ProteinDetail = g.ProteinDetail;
             this.ProteinWeight = g.ProteinWeight;
             this.Glucose = g.Glucose;
             this.L_C = g.L_C;
             this.EpithelialCells = g.EpithelialCells;
             this.Slime = g.Slime;
         }
+
+        public bool IsNull()
+        {
+            return Date == null & string.IsNullOrEmpty(Color) & string.IsNullOrEmpty(Density)
+                                & string.IsNullOrEmpty(Reaction) & string.IsNullOrEmpty(Protein)
+                                & string.IsNullOrEmpty(ProteinWeight)
+                                & string.IsNullOrEmpty(Glucose) & string.IsNullOrEmpty(L_C)
+                                & string.IsNullOrEmpty(EpithelialCells) & string.IsNullOrEmpty(Slime);
+        }
+        
     }
 }

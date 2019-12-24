@@ -141,7 +141,7 @@ namespace MedGUI.Model
                                     foreach (var or in this.AdditionalResearch.OtherResearches)
                                     {
                                         db.Database.ExecuteSqlCommand($"INSERT INTO OtherResearches (AdditionalResearchId, Research, Date, Result) " +
-                                                                      $"VALUES ({vmp.AdditionalResearch.Id}, '{or.Research}', '{or.Date.ToString("yyyy-MM-dd 00:00:00")}', '{or.Result}')");
+                                                                      $"VALUES ({vmp.AdditionalResearch.Id}, '{or.Research}', '{or.Date?.ToString("yyyy-MM-dd 00:00:00")}', '{or.Result}')");
                                     }
                                 }
                             }

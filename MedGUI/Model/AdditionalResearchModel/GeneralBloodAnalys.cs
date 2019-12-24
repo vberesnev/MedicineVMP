@@ -12,17 +12,17 @@ namespace MedGUI.Model.AdditionalResearchModel
     {
         public int? Id { get; set; }
         public DateTime? Date { get; set; }
-        public double Hb { get; set; }
-        public double E_C { get; set; }
-        public double CP { get; set; }
-        public double L_C { get; set; }
-        public double T_C { get; set; }
-        public double P_YA { get; set; }
-        public double C_YA { get; set; }
-        public double E_O { get; set; }
-        public double L_F { get; set; }
-        public double MO { get; set; }
-        public double COE { get; set; }
+        public string Hb { get; set; }
+        public string E_C { get; set; }
+        public string CP { get; set; }
+        public string L_C { get; set; }
+        public string T_C { get; set; }
+        public string P_YA { get; set; }
+        public string C_YA { get; set; }
+        public string E_O { get; set; }
+        public string L_F { get; set; }
+        public string MO { get; set; }
+        public string COE { get; set; }
 
         public ICollection<AdditionalResearch> AdditionalResearches { get; set; }
 
@@ -41,6 +41,15 @@ namespace MedGUI.Model.AdditionalResearchModel
             this.L_F = g.L_F;
             this.MO = g.MO;
             this.COE = g.COE;
+        }
+
+        public bool IsNull()
+        {
+            return Date == null & string.IsNullOrEmpty(Hb) & string.IsNullOrEmpty(E_C)
+                                & string.IsNullOrEmpty(CP) & string.IsNullOrEmpty(L_C)
+                                & string.IsNullOrEmpty(T_C) & string.IsNullOrEmpty(P_YA)
+                                & string.IsNullOrEmpty(C_YA) & string.IsNullOrEmpty(E_O)
+                                & string.IsNullOrEmpty(L_F) & string.IsNullOrEmpty(MO) & string.IsNullOrEmpty(COE);
         }
     }
 }

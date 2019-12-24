@@ -26,5 +26,10 @@ namespace MedGUI.Model.AdditionalResearchModel
             this.Rate = e.Rate;
             this.AdditionalInfo = e.AdditionalInfo;
         }
+
+        public bool IsNull()
+        {
+            return Date == null && string.IsNullOrEmpty(Rhythm) && Rate == 0 && string.IsNullOrEmpty(AdditionalInfo);
+        }
     }
 }
